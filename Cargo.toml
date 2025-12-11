@@ -1,10 +1,10 @@
 [package]
 name = "mcm_framework"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2024"
 
 [dependencies]
-daemon_console_lite = "0.1.5"
+daemon_console_lite = "0.1.6"
 tokio = { version = "1.0", features = ["full"] }
 
 [[bin]]

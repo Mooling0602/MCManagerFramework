@@ -4,7 +4,6 @@ use daemon_console_lite::logger::LogLevel::Info;
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let mut app = TerminalApp::new();
-    let _ = app.enable_raw_mode_on_windows();  // Add this to make sure console works fine in Windows.
     app.app_name = "MCManagerFramework".to_string();
     app.init_terminal("Starting MCManagerFramework...").await?;
     handle_tab_completion(&mut app);
