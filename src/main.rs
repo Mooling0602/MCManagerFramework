@@ -5,9 +5,10 @@ use daemon_console_lite::logger::LogLevel::Info;
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let mut app = TerminalApp::new();
     app.app_name = "MCManagerFramework".to_string();
-    app.init_terminal("Starting MCManagerFramework...").await?;
+    app.init_terminal(&format!("Starting {}...", app.app_name)).await?;
     handle_tab_completion(&mut app);
     app.info("Framework features are not implemented yet.");
+    app.debug(&format!("{} initialized.", app.app_name));
     while let Some(input) = app.read_input().await? {
         if handle_input(&mut app, &input) {
             break;
@@ -31,7 +32,7 @@ fn handle_input(app: &mut TerminalApp, input: &str) -> bool {
             false
         }
         "exit" => {
-            app.info("Exiting MCManagerFramework.");
+            app.info(&format!("Exiting {}...", app.app_name));
             true
         }
         _ => {
